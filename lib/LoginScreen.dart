@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartGym/main.dart';
+import 'BMICalculator/BMICalculator.dart';
+// import 'package:smartGym/main.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,13 +14,20 @@ class _LoginScreenState extends State<LoginScreen>
     super.initState();
   }
 
-/**
+/** 
  * In development alert box
  */
   AlertDialog dialog = AlertDialog(
     content: Image(
       image: AssetImage('assets/images/indev.json'),
     ),
+  );
+
+  /**
+   * AlertBox forgot password
+   */
+  AlertDialog dialog1 = AlertDialog(
+    content: Text("Please contact administrator to reset the account!!!"),
   );
 
   Widget HomePage() {
@@ -95,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen>
                         children: <Widget>[
                           new Expanded(
                             child: Text(
-                              "Register/ SIGN UP",
+                              "Register",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
@@ -300,7 +308,7 @@ class _LoginScreenState extends State<LoginScreen>
                   onPressed: () => {
                     showDialog(
                         context: context,
-                        builder: (BuildContext context) => dialog)
+                        builder: (BuildContext context) => dialog1)
                   },
                 ),
               ),
@@ -318,11 +326,7 @@ class _LoginScreenState extends State<LoginScreen>
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
                     color: Colors.redAccent,
-                    onPressed: () => {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) => dialog)
-                    },
+                    onPressed: () => goToBMIPage(),
                     child: new Container(
                       padding: const EdgeInsets.symmetric(
                         vertical: 20.0,
@@ -413,7 +417,6 @@ class _LoginScreenState extends State<LoginScreen>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
-                    obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -531,25 +534,72 @@ class _LoginScreenState extends State<LoginScreen>
             height: 24.0,
           ),
           new Row(
+            children: <Widget>[
+              new Expanded(
+                child: new Padding(
+                  padding: const EdgeInsets.only(left: 40.0),
+                  child: new Text(
+                    "Hostel Name",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.redAccent,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Container(
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.redAccent,
+                    width: 0.5,
+                    style: BorderStyle.solid),
+              ),
+            ),
+            padding: const EdgeInsets.only(left: 0.0, right: 10.0),
+            child: new Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                new Expanded(
+                  child: TextField(
+                    textAlign: TextAlign.left,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Annapoorani',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 24.0,
+          ),
+          new Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(right: 20.0),
                 child: new FlatButton(
-                    child: new Text(
-                      "Already have an account?",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.redAccent,
-                        fontSize: 15.0,
-                      ),
-                      textAlign: TextAlign.end,
+                  child: new Text(
+                    "Already have an account?",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.redAccent,
+                      fontSize: 15.0,
                     ),
-                    onPressed: () => {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) => dialog)
-                        }),
+                    textAlign: TextAlign.end,
+                  ),
+                  onPressed: () => gotoLogin(),
+                ),
               ),
             ],
           ),
@@ -596,6 +646,9 @@ class _LoginScreenState extends State<LoginScreen>
     );
   }
 
+/**
+ * Controller for navigating to the sign up page
+ */
   gotoLogin() {
     //controller_0To1.forward(from: 0.0);
     _controller.animateToPage(
@@ -605,22 +658,27 @@ class _LoginScreenState extends State<LoginScreen>
     );
   }
 
+/**
+ * controller for navigating to login page
+ */
   gotoSignup() {
     //controller_minus1To0.reverse(from: 0.0);
     _controller.animateToPage(
       2,
       duration: Duration(milliseconds: 800),
-      curve: Curves.decelerate,
+      curve: FlippedCurve(Curves.slowMiddle),
     );
   }
 
-  // gotoBMIPage() {
-  //   _controller.animateToPage(
-  //     3,
-  //     duration: Duration(microseconds: 10),
-  //     curve: FlippedCurve(Curves.slowMiddle),
-  //   );
-  // }
+/**
+ * Controller for navigating to the BMI page
+ */
+  goToBMIPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BMICalculator()),
+    );
+  }
 
   PageController _controller =
       new PageController(initialPage: 1, viewportFraction: 1.0);
