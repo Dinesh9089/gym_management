@@ -224,11 +224,10 @@ class _LoginScreenState extends State<LoginScreen>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
-                    obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: '111**A***',
+                      hintText: '11169A000',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),

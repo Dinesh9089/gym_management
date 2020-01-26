@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartGym/BMICalculator/theame.dart';
+import 'package:smartGym/CategorySelection.dart';
 
 class ResultPage extends StatelessWidget {
   final int height;
@@ -82,17 +83,24 @@ class _ResultState extends State<Result> {
           ),
         ),
         InkWell(
-          onTap: () => Navigator.pop(context),
+          onTap: () => goToCategorySelection(),
           child: Container(
             color: Colors.redAccent,
             margin: EdgeInsets.only(top: 10.0),
             height: MediaQuery.of(context).size.height * 0.1,
             child: Center(
-              child: Text('RE-CALCULATE', style: primaryButtonStyle),
+              child: Text('Select your Category', style: primaryButtonStyle),
             ),
           ),
         ),
       ],
+    );
+  }
+
+  goToCategorySelection() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CategorySelection()),
     );
   }
 }
