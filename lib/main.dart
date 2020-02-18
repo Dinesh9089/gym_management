@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartGym/LoginScreen.dart';
+import 'BarCode/barcodePage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -29,7 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       body: Container(
-        child: LoginScreen(),
+        // child: LoginScreen(),
+        child: BarcodePage(),
       ),
     );
   }
