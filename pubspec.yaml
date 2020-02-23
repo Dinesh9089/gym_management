@@ -24,6 +24,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   dio: ^1.0.13
+  barcode_flutter: ^1.0.0
+  qr_flutter: ^3.0.1
+  pedantic: ^1.9.0
 
 dev_dependencies:
   flutter_test:
@@ -50,11 +53,12 @@ flutter:
     - assets/images/indev.json
     - assets/images/male.png
     - assets/images/female.png
-    - assets/images/beginner.jpg
-    - assets/images/extreme.jpeg
-    - assets/images/extreme1.jpeg
-    - assets/images/intermediate.webp
-    - assets/images/inter2.webp
+    - assets/images/beginner.png
+    - assets/images/gears.gif
+    # - assets/images/extreme.jpeg
+    # - assets/images/extreme1.jpeg
+    # - assets/images/intermediate.webp
+    # - assets/images/inter2.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartGym/BMICalculator/theame.dart';
 import 'package:smartGym/CategorySelection.dart';
+import 'package:smartGym/BottomNavigation/MainNav.dart';
 
 class ResultPage extends StatelessWidget {
   final int height;
@@ -100,7 +101,7 @@ class _ResultState extends State<Result> {
   goToCategorySelection() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => CategorySelection()),
+      MaterialPageRoute(builder: (context) => MainNav()),
     );
   }
 }
